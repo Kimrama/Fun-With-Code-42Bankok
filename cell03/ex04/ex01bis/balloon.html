@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>balloon</title>
+    </head>
+    <body>
+        <div
+            id="balloon"
+            style="
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background-color: red;
+            "
+        ></div>
+        <script>
+            let colorIndex = 3;
+
+            $("#balloon").click(() => {
+                changeFromClick();
+            });
+
+            $("#balloon").mouseleave(() => {
+                changeFromLeave();
+            });
+
+            function changeFromClick() {
+                colorIndex += 1;
+                if (colorIndex >= 3) colorIndex = 0;
+                increaseSize();
+                changeColor(colorIndex);
+            }
+            function changeFromLeave() {
+                colorIndex -= 1;
+                if (colorIndex <= -1) colorIndex = 2;
+                decreaseSize();
+                changeColor(colorIndex);
+            }
+            function increaseSize() {
+                const currObjWidth = parseInt($("#balloon").css("width"));
+                const currObjHeight = parseInt($("#balloon").css("height"));
+                $("#balloon").css({
+                    width: (currObjWidth + 10).toString() + "px",
+                    height: (currObjHeight + 10).toString() + "px",
+                });
+                if (currObjWidth >= 420 || currObjWidth + 10 > 420) {
+                    $("#balloon").css({
+                        width: "200px",
+                        height: "200px",
+                    });
+                }
+            }
+
+            function decreaseSize() {
+                const currObjWidth = parseInt($("#balloon").css("width"));
+                const currObjHeight = parseInt($("#balloon").css("height"));
+                if (currObjWidth > 200) {
+                    $("#balloon").css({
+                        width: (currObjWidth - 5).toString() + "px",
+                        height: (currObjHeight - 5).toString() + "px",
+                    });
+                }
+                if (currObjWidth > 420) {
+                    $("#balloon").css({
+                        width: "200px",
+                        height: "200px",
+                    });
+                }
+            }
+            function changeColor(colorIndex) {
+                if (colorIndex == 0) $("#balloon").css("background", "green");
+                if (colorIndex == 1) $("#balloon").css("background", "blue");
+                if (colorIndex == 2) $("#balloon").css("background", "red");
+            }
+        </script>
+    </body>
+</html>

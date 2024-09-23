@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>background</title>
+  </head>
+
+  <body>
+    <button onclick="changeColor()">Change color</button>
+    <script>
+      function changeColor() {
+        let color = "#" + Math.floor(Math.random() * 9999999).toString(16);
+        document.body.style.background = color;
+        console.log(document.body.style);
+      }
+    </script>
+  </body>
+</html>

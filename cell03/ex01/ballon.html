@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>balloon</title>
+  </head>
+  <body>
+    <div
+      style="
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: red;
+      "
+      onclick="changeFromClick(this)"
+      onmouseout="changeFromLeave(this)"
+    ></div>
+    <script>
+      let colorIndex = 3;
+      function changeFromClick(obj) {
+        colorIndex += 1;
+        if (colorIndex >= 3) colorIndex = 0;
+        increaseSize(obj);
+        changeColor(obj, colorIndex);
+      }
+      function changeFromLeave(obj) {
+        colorIndex -= 1;
+        if (colorIndex <= -1) colorIndex = 2;
+        decreaseSize(obj);
+        changeColor(obj, colorIndex);
+      }
+      function increaseSize(obj) {
+        obj.style.width = (parseInt(obj.style.width) + 10).toString() + "px";
+        obj.style.height = (parseInt(obj.style.height) + 10).toString() + "px";
+        // change size
+        if (parseInt(obj.style.width) > 420) {
+          obj.style.width = "200px";
+          obj.style.height = "200px";
+        }
+      }
+      function decreaseSize(obj) {
+        if (parseInt(obj.style.width) > 200) {
+          obj.style.width = (parseInt(obj.style.width) - 5).toString() + "px";
+          obj.style.height = (parseInt(obj.style.height) - 5).toString() + "px";
+        }
+      }
+      function changeColor(obj, colorIndex) {
+        if (colorIndex == 0) obj.style.background = "green";
+        if (colorIndex == 1) obj.style.background = "blue";
+        if (colorIndex == 2) obj.style.background = "red";
+      }
+    </script>
+  </body>
+</html>

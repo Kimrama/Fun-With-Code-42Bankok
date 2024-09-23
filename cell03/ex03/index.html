@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>index</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #new-btn {
+        font-size: 28px;
+        width: 200px;
+        background-color: aqua;
+      }
+      #new-btn:hover {
+        cursor: pointer;
+      }
+      .task-card {
+        border: 1px solid black;
+        width: 100%;
+        height: 24px;
+        margin: 4px;
+      }
+      #ft_list {
+        width: 250px;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      h1 {
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>TODO LIST</h1>
+      <div id="ft_list"></div>
+      <button id="new-btn" onclick="addToDo()">NEW</button>
+    </div>
+    <script src="todo.js"></script>
+  </body>
+</html>

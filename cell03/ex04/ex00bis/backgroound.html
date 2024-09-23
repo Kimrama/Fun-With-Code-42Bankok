@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>background</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="backgroound.css" />
+    </head>
+
+    <body>
+        <button id="chg-cl-btn">Change color</button>
+        <script>
+            $("#chg-cl-btn").click(() => {
+                const color =
+                    "#" + Math.floor(Math.random() * 16777215).toString(16);
+                $("body").css("background", color);
+            });
+        </script>
+    </body>
+</html>

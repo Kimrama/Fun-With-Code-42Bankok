@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <style>
+      * {
+        font-family: monospace;
+      }
+      .main-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      #calc-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+          "lab-a lab-sign lab-b"
+          "inp-a inp-sign inp-b"
+          "cal cal cal";
+        row-gap: 10px;
+        column-gap: 10px;
+      }
+      label {
+        font-size: 24px;
+        text-align: center;
+      }
+      input {
+        text-align: center;
+        font-size: 28px;
+      }
+      select {
+        text-align: center;
+        font-size: 28px;
+      }
+      #label-a {
+        grid-area: lab-a;
+      }
+      #input-a {
+        grid-area: inp-a;
+      }
+      #lab-opt {
+        grid-area: lab-sign;
+      }
+      #opt {
+        grid-area: inp-sign;
+      }
+      #label-b {
+        grid-area: lab-b;
+      }
+      #input-b {
+        grid-area: inp-b;
+      }
+      #btn {
+        grid-area: cal;
+        font-size: 30px;
+      }
+      .frm-calc {
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="frm-calc">
+        <form id="calc-form">
+          <label id="label-a" for="value-a">value A</label>
+          <input
+            id="input-a"
+            type="text"
+            name="value-a"
+            onchange="checkNum(this)"
+          />
+
+          <label for="opt" id="lab-opt">operation</label>
+          <select name="opt" id="sel-opt" onchange="showOpt(this)">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+            <option value="mod">%</option>
+          </select>
+
+          <label id="label-b" for="value-b">value B</label>
+          <input
+            id="input-b"
+            type="text"
+            name="value-b"
+            onchange="checkNum(this)"
+          />
+
+          <input type="submit" id="btn" value="Try ME!"></input>
+        </form>
+      </div>
+    </div>
+    <script>
+      const calcForm = document.getElementById('calc-form');
+      setInterval(() => {
+        alert("Please, use me...");
+      }, 30000)
+      
+      function checkNum(obj) {
+        if (obj.value < 0) {
+          alert("Error :(");
+          console.log("Error :(");
+        }
+      }
+
+      function showOpt(obj) {
+        console.log(obj.value);
+      }
+
+      calcForm.addEventListener("submit", (e) => {
+        const valueA = document.getElementById("input-a").value;
+        const valueB = document.getElementById("input-b").value;
+        const opt = document.getElementById("sel-opt").value;
+        calculation(valueA, valueB, opt);
+        e.preventDefault()
+      })
+
+      function calculation(valueA, valueB, opt) {
+        if (opt == "divide" || opt == "mod") {
+            if (valueB == 0) {
+              alert("It's over 9000!");
+              console.log("It's over 9000!");
+              return;
+            }
+        }
+          switch (opt) {
+            case "plus" :
+              alert(`result: ${parseInt(valueA) + parseInt(valueB)}`)
+              console.log(`result: ${parseInt(valueA) + parseInt(valueB)}`);
+              break;
+            case "minus" :
+              alert(`result: ${parseInt(valueA) - parseInt(valueB)}`)
+              console.log(`result: ${parseInt(valueA) - parseInt(valueB)}`);
+              break;
+            case "multiply" :
+              alert(`result: ${parseInt(valueA) * parseInt(valueB)}`)
+              console.log(`result: ${parseInt(valueA) * parseInt(valueB)}`);
+              break;
+            case "divide" :
+              alert(`result: ${parseInt(valueA) / parseInt(valueB)}`)
+              console.log(`result: ${parseInt(valueA) / parseInt(valueB)}`);
+              break;
+            case "mod" :
+              alert(`result: ${parseInt(valueA) % parseInt(valueB)}`)
+              console.log(`result: ${parseInt(valueA) % parseInt(valueB)}`);
+              break;
+          }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+* {
+  font-family: monospace;
+}
+
+label {
+  font-size: 30px;
+  background-color: aqua;
+}
+select {
+  font-size: 30px;
+  background-color: whitesmoke;
+}
